@@ -1,1 +1,2 @@
-# write-your-thoughts
+# Just a silly notes app
+
