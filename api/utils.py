@@ -1,6 +1,7 @@
 from rest_framework.response import Response
 from .models import Note
 from .serializers import NoteSerializer
+from rest_framework import status
 
 
 def getNotesList(request):
@@ -30,8 +31,9 @@ def updateNote(request, pk):
 
     if serializer.is_valid():
         serializer.save()
-
-    return serializer.data
+        return Response(serializer.data)
+    else:
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
 def deleteNote(request, pk):
